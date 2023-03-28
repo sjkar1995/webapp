@@ -1,12 +1,17 @@
-from flask import Flask
+from flask import Flask,request,render_templaterender_template
 from markupsafe import escape
 
 app = Flask(__name__)
 #hello
-
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        return 'you are login'
+    else:
+        return '404'
 @app.route("/")
 def hello_world():
-    return "<p>Hello, World!</p>"
+    return render_template('home.html')
 @app.route('/main')
 def index():
     return 'Index Page'
